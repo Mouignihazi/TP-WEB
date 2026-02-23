@@ -58,3 +58,24 @@ button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(83, 91, 242, 0.4);
 }
+
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon svg {
+  position: absolute;
+  left: 10px;
+  color: #555;
+}
+
+.input-icon input,
+.input-icon select {
+  padding-left: 30px; /* espace pour l'icône */
+  width: 100%;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

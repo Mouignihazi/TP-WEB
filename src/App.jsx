@@ -1,5 +1,4 @@
-
-import { FaCalculator } from "react-icons/fa";
+import { FaCalculator, FaPlus, FaMinus, FaTimes, FaDivide } from "react-icons/fa";
 import { useState } from 'react';
 import './App.css';
 
@@ -37,45 +36,67 @@ function App() {
     setResult(res);
   };
 
+  const renderOperatorIcon = () => {
+    switch (operator) {
+      case 'addition':
+        return <FaPlus />;
+      case 'soustraction':
+        return <FaMinus />;
+      case 'multiplication':
+        return <FaTimes />;
+      case 'division':
+        return <FaDivide />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="container">
-      <h1>
-        <FaCalculator style={{ marginRight: "8px" }} />
-        Calculatrice
-        </h1>
+    <h1>
+      <FaCalculator style={{ marginRight: "8px" }} />
+      Calculatrice
+    </h1>
 
-      <form onSubmit={handleSubmit} className="form">
-        <select
-          name="option"
-          value={operator}
-          onChange={(e) => setOperator(e.target.value)}
-        >
-          <option value="addition">+ (addition)</option>
-          <option value="soustraction">- (soustraction)</option>
-          <option value="multiplication">x (multiplication)</option>
-          <option value="division">/ (division)</option>
-        </select>
+    <form onSubmit={handleSubmit} className="form">
+      <div className="input-group">
+        <label>
+          Opération :
+          <div className="input-icon">
+            {renderOperatorIcon()}
+            <select
+              value={operator}
+              onChange={(e) => setOperator(e.target.value)}
+            >
+              <option value="addition">+ (addition)</option>
+              <option value="soustraction">- (soustraction)</option>
+              <option value="multiplication">× (multiplication)</option>
+              <option value="division">÷ (division)</option>
+            </select>
+          </div>
+        </label>
+      </div>
 
-        <input
-          type="number"
-          name="number1"
-          placeholder="Number 1"
-          value={number1}
-          onChange={(e) => setNumber1(e.target.value)}
-          required
-        />
+      <input
+        type="number"
+        name="number1"
+        placeholder="Number 1"
+        value={number1}
+        onChange={(e) => setNumber1(e.target.value)}
+        required
+      />
 
-        <input
-          type="number"
-          name="number2"
-          placeholder="Number 2"
-          value={number2}
-          onChange={(e) => setNumber2(e.target.value)}
-          required
-        />
+      <input
+        type="number"
+        name="number2"
+        placeholder="Number 2"
+        value={number2}
+        onChange={(e) => setNumber2(e.target.value)}
+        required
+      />
 
-        <button type="submit">Valider</button>
-      </form>
+      <button type="submit">Valider</button>
+    </form>
 
       {result !== null && (
         <div className="result">

@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
+// Configuration pour Vite
 export default defineConfig({
   plugins: [react()],
+  base: "/TP-WEB/", // Assurez-vous que c'est exactement votre nom de dépôt
 });
